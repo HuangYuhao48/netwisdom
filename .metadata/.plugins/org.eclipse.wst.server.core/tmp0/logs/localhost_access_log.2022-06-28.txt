@@ -54,3 +54,9 @@
 0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:12:01 +0900] "GET /YGCbook/images/like.png HTTP/1.1" 404 1022
 0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:12:01 +0900] "GET /YGCbook/images/daodu33.gif HTTP/1.1" 200 58
 0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:12:01 +0900] "GET /YGCbook/images/dd-m09.gif HTTP/1.1" 200 57
+127.0.0.1 - - [28/Jun/2022:15:49:31 +0900] "GET / HTTP/1.1" 404 976
+0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:49:32 +0900] "GET /YGCbook/userReg.jsp HTTP/1.1" 200 1267
+0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:49:40 +0900] "GET /YGCbook/useRegister?username=&sex=0&major=0&intro=abcd HTTP/1.1" 404 1014
+0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:50:52 +0900] "GET /YGCbook/userReg.jsp HTTP/1.1" 200 1267
+0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:50:59 +0900] "GET /YGCbook/useRegister?username=&sex=0&major=0&intro=abcd HTTP/1.1" 404 1014
+0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:51:04 +0900] "GET /YGCbook/useRegister?username=&sex=0&major=0&intro=abcd HTTP/1.1" 404 1014
