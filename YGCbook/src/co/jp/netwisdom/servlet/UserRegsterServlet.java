@@ -55,26 +55,42 @@ public class UserRegsterServlet extends HttpServlet {
 		hobbyList.add(hobby3); */
 		
 		//#002用法
-		List hobbyList = new ArrayList();
+		/*List hobbyList = new ArrayList();
 		hobbyList.add(hobby1);
 		hobbyList.add(hobby2);
-		hobbyList.add(hobby3);
-		
-		
-		UserInfoDAO uDao = new UserInfoDAO(); 
-		
-		//HobbyDAO hDao = new HobbyDAO(); 
-		//dao.save(hobbyList);
+		hobbyList.add(hobby3);*/
 		
 		//用戶信息表更新
-		boolean result =  uDao.save(new UserInfo(username,password,sex,major,intro));
+		UserInfoDAO uDao = new UserInfoDAO(); 
+		boolean rs1 =  uDao.save(new UserInfo(username,password,sex,major,intro));
 		
-		if(result){
+		//Hobby
+		
+		String[] hobbyArr = request.getParameterValues("hobby");
+		List<Hobby> hobbyList = new ArrayList<Hobby>();
+		
+		for(String hobbyRs : hobbyArr){	
+			Hobby hobbyOne = new Hobby(username,hobbyRs);
+		}
+		
+		HobbyDAO hDao = new HobbyDAO();
+		boolean rs2 = hDao.insertHobby(hobbyList);
+		
+		/*if(rs1){
 			System.out.println("用戶信息載入成功!!!");
 		}else{
 			System.out.println("用戶信息載入失敗!!!");
 			}
-		
+		if(rs2){
+			System.out.println("愛好載入成功!!!");
+		}else{
+			System.out.println("愛好載入失敗!!!");
+			}*/
+		if(rs1 && rs2){
+			System.out.println("註冊成功!!!");
+		}else{
+			System.out.println("註冊失敗!!!");
+			}
 		
 		
 		//用戶愛好表更新 TODO

@@ -26,11 +26,38 @@ public class HobbyDAO {
 	}*/
 	
 	//#002用法
-	public boolean save(List list) {
+	public boolean insertHobby(List<Hobby> list) {
+		
 		int row = 0;
-		String sql = "insert into hobby(username,hobby)" +										 
-						" values(?,?)";
-		try {			
+		
+		String sql = "insert into hobby(username,hobby) values(?,?)";
+		
+		for(Hobby hobby : list){
+			
+			
+			Object[] values = {
+					hobby.getUsername(),
+					hobby.getHobby()
+					};
+			//執行sql文
+			try {
+				template.updata(sql, values);
+				if(row !=1){
+					break;
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return (row == 1);
+	}
+}
+		
+		/*try {			
 			for(Object object : list){
 				Hobby hobbyObject = (Hobby)object;
 				Object[] values = null;
@@ -45,10 +72,10 @@ public class HobbyDAO {
 			e.printStackTrace();
 		}
 		return (row == 1);
-	}
+	}*/
 		
 	
-		int row = 0;
+		/*int row = 0;
 		String sql = "insert into hobby(username,hobby)" +										 
 						" values(?,?)";
 		
@@ -393,4 +420,5 @@ public class HobbyDAO {
 	}
 
 }
+*/
 
