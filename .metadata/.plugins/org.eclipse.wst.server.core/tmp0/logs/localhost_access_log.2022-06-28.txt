@@ -60,3 +60,4 @@
 0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:50:52 +0900] "GET /YGCbook/userReg.jsp HTTP/1.1" 200 1267
 0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:50:59 +0900] "GET /YGCbook/useRegister?username=&sex=0&major=0&intro=abcd HTTP/1.1" 404 1014
 0:0:0:0:0:0:0:1 - - [28/Jun/2022:15:51:04 +0900] "GET /YGCbook/useRegister?username=&sex=0&major=0&intro=abcd HTTP/1.1" 404 1014
+0:0:0:0:0:0:0:1 - - [28/Jun/2022:16:15:39 +0900] "GET /YGCbook/useRegister?username=&sex=0&major=0&intro=abcd HTTP/1.1" 404 1014

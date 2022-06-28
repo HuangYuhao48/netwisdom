@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.jp.netwisdom.dao.HobbyDAO;
 import co.jp.netwisdom.dao.UserInfoDAO;
 import co.jp.netwisdom.entity.Hobby;
+import co.jp.netwisdom.entity.UserInfo;
 
 public class UserRegsterServlet extends HttpServlet {
 
@@ -60,19 +61,19 @@ public class UserRegsterServlet extends HttpServlet {
 		hobbyList.add(hobby3);
 		
 		
-		//UserInfoDAO dao = new UserInfoDAO(); 
+		UserInfoDAO uDao = new UserInfoDAO(); 
 		
-		HobbyDAO dao = new HobbyDAO(); 
-		dao.save(hobbyList);
+		//HobbyDAO hDao = new HobbyDAO(); 
+		//dao.save(hobbyList);
 		
 		//用戶信息表更新
-		//boolean result =  dao.save(new UserInfo(username,password,sex,major,intro));
+		boolean result =  uDao.save(new UserInfo(username,password,sex,major,intro));
 		
-		/*if(dao.save(new UserInfo(username,password,sex,major,intro))){
+		if(result){
 			System.out.println("用戶信息載入成功!!!");
 		}else{
-			System.out.println("用戶信息載入成功!!!");
-			}*/
+			System.out.println("用戶信息載入失敗!!!");
+			}
 		
 		
 		
