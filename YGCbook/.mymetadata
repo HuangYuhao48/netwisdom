@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="YGCbook"
+  id="myeclipse.1291961953809"
+  context-root="/YGCbook"
+  j2ee-spec="5.0"
+  archive="YGCbook.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
