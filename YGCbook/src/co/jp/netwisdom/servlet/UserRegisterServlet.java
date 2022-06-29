@@ -14,8 +14,9 @@ import co.jp.netwisdom.dao.UserInfoDAO;
 import co.jp.netwisdom.entity.Hobby;
 import co.jp.netwisdom.entity.UserInfo;
 
-public class UserRegsterServlet extends HttpServlet {
+public class UserRegisterServlet extends HttpServlet {
 
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//Name
@@ -33,7 +34,7 @@ public class UserRegsterServlet extends HttpServlet {
 		//String[] hobbyArray = {"0","1","2"};
 		//String[] hobby2 = new String[]{"1","2","3"};
 		//String[] hobby3 = new String[3];
-		username = "xxd";		
+		/*username = "xxd";		
 		String[] hobbyArray = {"0","1","2"};
 		
 		Hobby hobby1 = new Hobby();
@@ -46,7 +47,7 @@ public class UserRegsterServlet extends HttpServlet {
 		
 		Hobby hobby3 = new Hobby();
 		hobby3.setUsername(username);
-		hobby3.setHobby(hobbyArray[2]);
+		hobby3.setHobby(hobbyArray[2]);*/
 		
 		//#001用法
 		/*List<Hobby> hobbyList = new ArrayList<Hobby>();
@@ -61,16 +62,21 @@ public class UserRegsterServlet extends HttpServlet {
 		hobbyList.add(hobby3);*/
 		
 		//用戶信息表更新
+		
+		UserInfo userinfo = new UserInfo(username,password,sex,major,intro);
 		UserInfoDAO uDao = new UserInfoDAO(); 
-		boolean rs1 =  uDao.save(new UserInfo(username,password,sex,major,intro));
+		boolean rs1 =  uDao.save(userinfo);
 		
 		//Hobby
 		
 		String[] hobbyArr = request.getParameterValues("hobby");
 		List<Hobby> hobbyList = new ArrayList<Hobby>();
 		
+		
+		// 轉換數據
 		for(String hobbyRs : hobbyArr){	
 			Hobby hobbyOne = new Hobby(username,hobbyRs);
+			hobbyList.add(hobbyOne);
 		}
 		
 		HobbyDAO hDao = new HobbyDAO();
@@ -88,8 +94,10 @@ public class UserRegsterServlet extends HttpServlet {
 			}*/
 		if(rs1 && rs2){
 			System.out.println("註冊成功!!!");
+			request.getRequestDispatcher("userSuccess.jsp").forward(request, response);
 		}else{
 			System.out.println("註冊失敗!!!");
+			request.getRequestDispatcher("userFail.jsp").forward(request, response);
 			}
 		
 		
@@ -98,12 +106,7 @@ public class UserRegsterServlet extends HttpServlet {
 		
 		
 		//request.setAttribute("admin", admin);
-		request.getRequestDispatcher("/background/sysAdmin/upSysAdminStates.jsp").forward(request, response);
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		this.doGet(request, response);
+		//request.getRequestDispatcher("/background/sysAdmin/upSysAdminStates.jsp").forward(request, response);
 	}
 
 }

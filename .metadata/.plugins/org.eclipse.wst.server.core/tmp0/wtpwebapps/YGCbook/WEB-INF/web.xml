@@ -591,16 +591,16 @@
   
   
   
-  <!-- 後台servlet -->
+
   <servlet>
-	    <servlet-name>userRegisterServlet</servlet-name> <!-- 前後台名稱一致即可 -->
-	    <servlet-class>co.jp.netwisdom.servlet.UserRegisterServlet</servlet-class> <!-- 後臺對應src路徑 -->
+	    <servlet-name>registerServlet</servlet-name> 
+	    <servlet-class>co.jp.netwisdom.servlet.UserRegisterServlet</servlet-class> 
   </servlet>
   
-  <!-- 前台servlet mapping -->
+  
   <servlet-mapping>
-	    <servlet-name>userRegisterServlet</servlet-name>
-	    <url-pattern>/userRegister</url-pattern> <!-- action -->
+	    <servlet-name>registerServlet</servlet-name>
+	    <url-pattern>/userReg</url-pattern> 
   </servlet-mapping>
   	
   
