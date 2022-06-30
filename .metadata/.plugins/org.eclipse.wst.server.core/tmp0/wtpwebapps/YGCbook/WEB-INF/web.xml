@@ -590,7 +590,7 @@
   
   
   
-  
+  <!-- userReg -->
 
   <servlet>
 	    <servlet-name>registerServlet</servlet-name> 
@@ -603,7 +603,17 @@
 	    <url-pattern>/userReg</url-pattern> 
   </servlet-mapping>
   	
-  
+ 
+ 
+<!-- usersearch -->
+  <servlet>
+	    <servlet-name>userSearchServlet</servlet-name> 
+	    <servlet-class>co.jp.netwisdom.servlet.UserSearchServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+	    <servlet-name>userSearchServlet</servlet-name>
+	    <url-pattern>/userSearch</url-pattern> 
+  </servlet-mapping>
   
   
   

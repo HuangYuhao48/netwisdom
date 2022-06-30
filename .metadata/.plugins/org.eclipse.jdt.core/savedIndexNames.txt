@@ -3,7 +3,6 @@ INDEX VERSION 1.130+C:\Users\ikugo\Desktop\Œ‘ğ\2022-06-28\netwisdom\.metadata\.
 839629898.index
 3766711668.index
 3380842196.index
-910815716.index
 2687020790.index
 2557798639.index
 2552169928.index
