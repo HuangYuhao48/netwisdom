@@ -1,4 +1,4 @@
-package co.jp.netwisdom.dao;
+package co.jp.netwisdom.dto;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -10,7 +10,7 @@ import co.jp.netwisdom.entity.UserInfoAndHobby;
 import co.jp.netwisdom.mapping.UserInfoAndHobbyMapping;
 import co.jp.netwisdom.mapping.UserInfoMapping;
 
-public class UserInfoDAO {
+public class UserInfoDto {
 	
 	
 	private JdbcTemplate template = new JdbcTemplate();
@@ -106,13 +106,13 @@ public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex 
 			sql= sql + " and major = '" + major + "'" ;	
 		}
 		
-		List<UserInfoAndHobby> list2 = new Vector<UserInfoAndHobby>();
+		List<UserInfoAndHobby> list = new Vector<UserInfoAndHobby>();
 		try {
-			list2 = template.selete(sql, new UserInfoAndHobbyMapping());
+			list = template.selete(sql, new UserInfoAndHobbyMapping());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return list2;
+		return list;
 	}
 }
