@@ -10,8 +10,7 @@ public class UserInfoAndHobby {
 	private String sex;
 	private String major;
 	private String intro;
-	
-	private List<HobbyDto> hobbyList;
+	private String hobby;
 
 	public String getUsername() {
 		return username;
@@ -53,21 +52,22 @@ public class UserInfoAndHobby {
 		this.intro = intro;
 	}
 
-	public List<HobbyDto> getHobbyList() {
-		return hobbyList;
+	public String getHobby() {
+		return hobby;
 	}
 
-	public void setHobbyList(List<HobbyDto> hobbyList) {
-		this.hobbyList = hobbyList;
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
 	}
 
-	public UserInfoAndHobby(String username, String password, String sex, String major, String intro) {
+	public UserInfoAndHobby(String username, String password, String sex, String major, String intro, String hobby) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.sex = sex;
 		this.major = major;
 		this.intro = intro;
+		this.hobby = hobby;
 	}
 
 	public UserInfoAndHobby() {
@@ -75,7 +75,6 @@ public class UserInfoAndHobby {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	
 	
 	

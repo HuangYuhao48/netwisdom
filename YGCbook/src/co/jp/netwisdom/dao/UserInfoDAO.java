@@ -89,15 +89,12 @@ public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex 
 		System.out.println(major);
 		
 		
-		String sql = "select userinfo.username,`password`,sex,major,intro,hobby from userinfo LEFT JOIN hobby ON userinfo.username = hobby.username where " ;
+		String sql = "select userinfo.username,password,sex,major,intro,hobby from userinfo LEFT JOIN hobby ON userinfo.username = hobby.username where " ;
 		
 		
 		if(!"".equals(username)){
-			sql= sql + "username = '" + username + "' and" ;	
-		}else{
-			sql= sql + "username = '" + username ;
+			sql= sql + " userinfo.username = '" + username + "' and" ;	
 		}
-		
 		//sex
 		sql= sql + " sex = '" + sex + "'" ;	
 		

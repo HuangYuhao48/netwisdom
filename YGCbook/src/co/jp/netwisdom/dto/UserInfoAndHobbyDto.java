@@ -1,8 +1,11 @@
 package co.jp.netwisdom.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import co.jp.netwisdom.dto.HobbyDto;
+import co.jp.netwisdom.entity.Hobby;
+
+
 
 public class UserInfoAndHobbyDto {
 	private String username;
@@ -11,7 +14,7 @@ public class UserInfoAndHobbyDto {
 	private String major;
 	private String intro;
 	
-	private List<HobbyDto> hobbyList;
+	private List<HobbyDto> hobbyList = new ArrayList<HobbyDto>();
 
 	public String getUsername() {
 		return username;
@@ -68,13 +71,13 @@ public class UserInfoAndHobbyDto {
 		this.sex = sex;
 		this.major = major;
 		this.intro = intro;
+		
 	}
 
 	public UserInfoAndHobbyDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	
 	

@@ -15,6 +15,7 @@ import com.sun.corba.se.impl.transport.DefaultIORToSocketInfoImpl;
 
 import co.jp.netwisdom.dao.HobbyDAO;
 import co.jp.netwisdom.dao.UserInfoDAO;
+import co.jp.netwisdom.dto.HobbyDto;
 import co.jp.netwisdom.dto.UserInfoAndHobbyDto;
 import co.jp.netwisdom.dto.UserInfoDto;
 import co.jp.netwisdom.entity.Hobby;
@@ -36,10 +37,12 @@ public class UserSearchServlet extends HttpServlet {
 		
 		UserInfoDAO uDao = new UserInfoDAO(); 
 		List<UserInfoAndHobby> list = uDao.findUserInfoAndHobby(username, sex, major);
-		List<UserInfoDto> userInfoDtos = new ArrayList<UserInfoDto>();
-		Map<String, String> userNameMap = new HashMap<String, String>();
 		
-		List<String> userNameList = new ArrayList<String>();
+		List<UserInfoDto> userInfoDtos = new ArrayList<UserInfoDto>();
+		
+		Map<String, String> userNameMap = new HashMap<String, String>();
+		//標示dto是否被創建
+		List<String> userNames = new ArrayList<String>();
 		
 		List<UserInfoAndHobbyDto> dtos = new ArrayList<UserInfoAndHobbyDto>();
 		
@@ -50,24 +53,62 @@ public class UserSearchServlet extends HttpServlet {
 		//UserInfo userinfo = uDao.findUserInfo(username , sex , major );
 		for(UserInfoAndHobby userinfoandhobby : list){
 			
-			UserInfoDto dto = new UserInfoDto(userinfoandhobby.getUsername() , userinfoandhobby.getPassword() , 
-					userinfoandhobby.getSex() , userinfoandhobby.getMajor() , userinfoandhobby.getIntro());
 			
-			
-			if(!userNameList.contains(userinfoandhobby.getUsername())){
+			//用戶名不存在時 ,證明大的dto未創建
+			if(!userNames.contains(userinfoandhobby.getUsername())){
+				
+				
+				UserInfoAndHobbyDto dto = new UserInfoAndHobbyDto(userinfoandhobby.getUsername() , userinfoandhobby.getPassword() , 
+						userinfoandhobby.getSex() , userinfoandhobby.getMajor() , userinfoandhobby.getIntro());
+				
+				//將創建的大的dto加到畫面展示list裡
 				dtos.add(dto);
+				//將用戶名加到用戶名list裡 
+				userNames.add(userinfoandhobby.getUsername());
+				
+				//將愛好加入子dto中
+				dto.getHobbyList().add(new HobbyDto(userinfoandhobby.getHobby()));
+			}else{
+				
+				//取得以往添加過的大dto
+				for(UserInfoAndHobbyDto temp : dtos){
+					if(temp.getUsername().equals(userinfoandhobby.getUsername())){
+						//將愛好加入子dto中
+						temp.getHobbyList().add(new HobbyDto(userinfoandhobby.getHobby()));
+					}
+					
+				}
+				
 			}
 			
-			System.out.println("姓名:" + userinfoandhobby.getUsername());
-		 	System.out.println("密碼:" + userinfoandhobby.getPassword());
-			System.out.println("性別:" + userinfoandhobby.getSex());
-			System.out.println("專業:" + userinfoandhobby.getMajor());
-			System.out.println("簡介:" + userinfoandhobby.getIntro());
-			System.out.println("愛好:" + userinfoandhobby.getHobbyList());
-			System.out.println("----------分隔線----------");
+			
+			
+			
 		}
 	
-		
+		for(UserInfoAndHobbyDto result : dtos){
+			
+			System.out.println("----------分隔線----------");
+			System.out.println("姓名:" + result.getUsername());
+		 	System.out.println("密碼:" + result.getPassword());
+			System.out.println("性別:" + result.getSex());
+			System.out.println("專業:" + result.getMajor());
+			System.out.println("簡介:" + result.getIntro());
+			
+			System.out.println("愛好:");
+			StringBuffer sb = new StringBuffer("");
+			for(HobbyDto hobbyDto : result.getHobbyList()){
+			//System.out.print(hobbyDto.getHobby() + ",");
+			sb.append(hobbyDto.getHobby() + ",");
+			}
+			if(",".equals(sb.toString().substring(sb.toString().length()-1))){
+				System.out.print(sb.toString().substring(0,sb.toString().length()-1));
+			}else{
+			System.out.print(sb.toString());
+			}
+			
+			System.out.println("");
+		}
 		
 		 
 		//HobbyDAO hDao = new HobbyDAO();
