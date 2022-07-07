@@ -1,6 +1,7 @@
 package co.jp.netwisdom.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -16,6 +17,7 @@ public class UserInfoDAO {
 	private JdbcTemplate template = new JdbcTemplate();
 	
 	
+
 	public boolean save(UserInfo userinfo) {
 		//默認失敗 row = 0
 		int row = 0;
@@ -46,7 +48,7 @@ public class UserInfoDAO {
 	
 	
 	//抽出
-	public List<UserInfo> findUserInfo(String username , String sex , String major ) {
+	/*public List<UserInfo> findUserInfo(String username , String sex , String major ) {
 		
 		System.out.println("###");
 		System.out.println(username);
@@ -79,31 +81,27 @@ public class UserInfoDAO {
 		}
 		
 		return list;
-	}
+	}*/
 	
 public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex , String major ) {
 		
-		System.out.println("###");
-		System.out.println(username);
-		System.out.println(sex);
-		System.out.println(major);
 		
-		
-		String sql = "select userinfo.username,password,sex,major,intro,hobby from userinfo LEFT JOIN hobby ON userinfo.username = hobby.username where " ;
+		String sql = "select userinfo.username,password,sex,major,intro,hobby from userinfo LEFT JOIN hobby ON userinfo.username = hobby.username where 1=1 " ;
 		
 		
 		if(!"".equals(username)){
-			sql= sql + " userinfo.username = '" + username + "' and" ;	
+			sql= sql + " and userinfo.username = '" + username + "' " ;	
 		}
 		//sex
-		sql= sql + " sex = '" + sex + "'" ;	
-		
+		if(sex!=null){
+			sql= sql + " and userinfo.sex = '" + sex + "' " ;	
+		}
 		//major
 		if(!"".equals(major)){
-			sql= sql + " and major = '" + major + "'" ;	
+			sql= sql + " and major = '" + major + "' " ;	
 		}
 		
-		List<UserInfoAndHobby> list2 = new Vector<UserInfoAndHobby>();
+		List<UserInfoAndHobby> list2 = new ArrayList<UserInfoAndHobby>();
 		try {
 			list2 = template.selete(sql, new UserInfoAndHobbyMapping());
 		} catch (SQLException e) {
@@ -111,5 +109,5 @@ public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex 
 		}
 		
 		return list2;
-	}
+	}	
 }

@@ -9,12 +9,12 @@ import co.jp.netwisdom.entity.Hobby;
 
 public class UserInfoAndHobbyDto {
 	private String username;
-	private String password;
 	private String sex;
 	private String major;
 	private String intro;
 	
-	private List<HobbyDto> hobbyList = new ArrayList<HobbyDto>();
+	
+	List<String> hobbyList ;
 
 	public String getUsername() {
 		return username;
@@ -24,13 +24,7 @@ public class UserInfoAndHobbyDto {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 
 	public String getSex() {
 		return sex;
@@ -56,18 +50,17 @@ public class UserInfoAndHobbyDto {
 		this.intro = intro;
 	}
 
-	public List<HobbyDto> getHobbyList() {
+	public List<String> getHobbyList() {
 		return hobbyList;
 	}
 
-	public void setHobbyList(List<HobbyDto> hobbyList) {
+	public void setHobbyList(List<String> hobbyList) {
 		this.hobbyList = hobbyList;
 	}
 
-	public UserInfoAndHobbyDto(String username, String password, String sex, String major, String intro) {
+	public UserInfoAndHobbyDto(String username, String sex, String major, String intro) {
 		super();
 		this.username = username;
-		this.password = password;
 		this.sex = sex;
 		this.major = major;
 		this.intro = intro;

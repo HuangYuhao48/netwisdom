@@ -618,6 +618,20 @@
   
   
   
+  <!-- U_Search -->
+  
+  <servlet>
+  		<servlet-name>U_Search</servlet-name> 
+	    <servlet-class>co.jp.netwisdom.servlet.U_SearchServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>U_Search</servlet-name>
+  		<url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
   	
   <!--<error-page>
   	<error-code>404</error-code>

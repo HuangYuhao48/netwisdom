@@ -15,16 +15,14 @@ import com.sun.corba.se.impl.transport.DefaultIORToSocketInfoImpl;
 
 import co.jp.netwisdom.dao.HobbyDAO;
 import co.jp.netwisdom.dao.UserInfoDAO;
-import co.jp.netwisdom.dto.HobbyDto;
 import co.jp.netwisdom.dto.UserInfoAndHobbyDto;
-import co.jp.netwisdom.dto.UserInfoDto;
 import co.jp.netwisdom.entity.Hobby;
 import co.jp.netwisdom.entity.UserInfo;
 import co.jp.netwisdom.entity.UserInfoAndHobby;
-
+/*
 public class UserSearchServlet extends HttpServlet {
 
-	
+/*	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -38,10 +36,10 @@ public class UserSearchServlet extends HttpServlet {
 		UserInfoDAO uDao = new UserInfoDAO(); 
 		List<UserInfoAndHobby> list = uDao.findUserInfoAndHobby(username, sex, major);
 		
-		List<UserInfoDto> userInfoDtos = new ArrayList<UserInfoDto>();
+		//List<UserInfoDto> userInfoDtos = new ArrayList<UserInfoDto>();
 		
-		Map<String, String> userNameMap = new HashMap<String, String>();
-		//標示dto是否被創建
+		//Map<String, String> userNameMap = new HashMap<String, String>();
+		//標示dto是否被創建 
 		List<String> userNames = new ArrayList<String>();
 		
 		List<UserInfoAndHobbyDto> dtos = new ArrayList<UserInfoAndHobbyDto>();
@@ -80,10 +78,7 @@ public class UserSearchServlet extends HttpServlet {
 				}
 				
 			}
-			
-			
-			
-			
+
 		}
 	
 		for(UserInfoAndHobbyDto result : dtos){
@@ -115,7 +110,15 @@ public class UserSearchServlet extends HttpServlet {
 		
 		
 		
-		
+		if(true){
+			//不會把request中參數全部清除掉進行跳轉
+			request.getRequestDispatcher("/userRegSuccess.jsp").forward(request, response);
+			//會把request中參數全部清除掉進行跳轉
+			response.sendRedirect("/userRegSuccess.jsp");
+			
+		}else{
+			request.getRequestDispatcher("/userRegErr.jsp").forward(request, response);
+		}
 		
 		
 		
@@ -166,7 +169,6 @@ public class UserSearchServlet extends HttpServlet {
 		
 		
 		//request.setAttribute("admin", admin);
-		//request.getRequestDispatcher("/background/sysAdmin/upSysAdminStates.jsp").forward(request, response);
-	}
+		//request.getRequestDispatcher("/background/sysAdmin/upSysAdminStates.jsp").forward(request, response);*/
+	
 
-}

@@ -12,7 +12,14 @@ public class UserInfoAndHobbyMapping implements IResultSetMapping{
 	@Override
 	public UserInfoAndHobby mapping(ResultSet rs) throws SQLException {
 		int i = 1;
-		UserInfoAndHobby userInfoAndHobby = new UserInfoAndHobby(rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++));
+		UserInfoAndHobby userInfoAndHobby = new UserInfoAndHobby(
+				rs.getString(i++), 
+				rs.getString(i++), 
+				rs.getString(i++), 
+				rs.getString(i++), 
+				rs.getString(i++), 
+				rs.getString(i++));
+		
 		return userInfoAndHobby;
 	}
 }

@@ -2,7 +2,7 @@ package co.jp.netwisdom.entity;
 
 import java.util.List;
 
-import co.jp.netwisdom.dto.HobbyDto;
+
 
 public class UserInfoAndHobby {
 	private String username;
