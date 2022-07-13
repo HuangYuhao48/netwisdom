@@ -9,6 +9,7 @@ import co.jp.netwisdom.entity.Hobby;
 
 public class UserInfoAndHobbyDto {
 	private String username;
+	private String password;
 	private String sex;
 	private String major;
 	private String intro;
@@ -18,6 +19,23 @@ public class UserInfoAndHobbyDto {
 
 	public String getUsername() {
 		return username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public UserInfoAndHobbyDto(String username, String password, String sex, String major, String intro) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.sex = sex;
+		this.major = major;
+		this.intro = intro;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setUsername(String username) {

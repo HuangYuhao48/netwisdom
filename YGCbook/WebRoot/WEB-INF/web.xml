@@ -630,6 +630,27 @@
   </servlet-mapping>
   
   
+   <!-- INIT -->
+  
+  <servlet>
+  		<servlet-name>initServlet</servlet-name> 
+	    <servlet-class>co.jp.netwisdom.servlet.U_InitServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>initServlet</servlet-name>
+  		<url-pattern>/userInit</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Update -->
+  
+  <servlet>
+  		<servlet-name>userUpdateServlet</servlet-name> 
+	    <servlet-class>co.jp.netwisdom.servlet.U_UpdateServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>userUpdateServlet</servlet-name>
+  		<url-pattern>/update</url-pattern>
+  </servlet-mapping>
   
   
   	

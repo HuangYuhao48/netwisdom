@@ -49,6 +49,32 @@ public class HobbyDAO {
 		}
 		return (row == 1);
 	}
+	
+	/**
+	 * 論理削除
+	 * @param userinfo
+	 * @return
+	 */
+	public boolean delHobby(String username) {
+	
+		
+		String sql = "update hobby set delFlg='1' where hobby.username=? ";
+		
+		Object[] values = new Object[]{
+				username
+			};
+		
+		
+		try {
+			template.updata(sql, values);
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
 }
 		
 

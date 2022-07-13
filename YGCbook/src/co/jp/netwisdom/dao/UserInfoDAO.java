@@ -23,7 +23,7 @@ public class UserInfoDAO {
 		int row = 0;
 		
 		//定義sql文
-		String sql = "insert into userinfo (username,password,sex,major,intro) values (?,?,?,?,?)";
+		String sql = "insert into userinfo (username,password,sex,major,intro,delFlg) values (?,?,?,?,?,?)";
 		
 		//輸入5個值給values
 		Object[] values = new Object[]{
@@ -31,7 +31,8 @@ public class UserInfoDAO {
 			userinfo.getPassword(),
 			userinfo.getSex(),
 			userinfo.getMajor(),
-			userinfo.getIntro()
+			userinfo.getIntro(),
+			"0"
 			};
 		
 		
@@ -86,7 +87,7 @@ public class UserInfoDAO {
 public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex , String major ) {
 		
 		
-		String sql = "select userinfo.username,password,sex,major,intro,hobby from userinfo LEFT JOIN hobby ON userinfo.username = hobby.username where 1=1 " ;
+		String sql = "select userinfo.username,password,sex,major,intro,hobby from userinfo LEFT JOIN hobby ON userinfo.username = hobby.username where 1=1  " ;
 		
 		
 		if(!"".equals(username)){
@@ -101,6 +102,8 @@ public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex 
 			sql= sql + " and major = '" + major + "' " ;	
 		}
 		
+		sql = sql + " and userinfo.delFlg='0' and hobby.delFlg='0' ";
+		
 		List<UserInfoAndHobby> list2 = new ArrayList<UserInfoAndHobby>();
 		try {
 			list2 = template.selete(sql, new UserInfoAndHobbyMapping());
@@ -110,4 +113,52 @@ public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex 
 		
 		return list2;
 	}	
+
+
+	public List<UserInfoAndHobby> findUserInfoAndHobby(String username) {
+	
+	
+		String sql = "select userinfo.username,password,sex,major,userinfo.intro,hobby.hobby from userinfo LEFT JOIN hobby ON userinfo.username = hobby.username where 1=1 " ;
+		
+			sql= sql + " and userinfo.username = '" + username + "' " ;	
+			sql= sql + " and userinfo.delFlg='0' and hobby.delFlg='0' ";
+
+		List<UserInfoAndHobby> list2 = new ArrayList<UserInfoAndHobby>();
+		try {
+			list2 = template.selete(sql, new UserInfoAndHobbyMapping());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list2;
+	}	
+	
+	/**
+	 * 論理削除
+	 * @param userinfo
+	 * @return
+	 */
+	public boolean delUserInfo(String username){
+		//默認失敗 row = 0
+		int row = 0;
+		
+		String sql = "update userinfo set delFlg='1' where userinfo.username=? ";
+		
+		Object[] values = new Object[]{
+				username
+			};
+		
+		
+		try {
+			row = template.updata(sql, values);
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return (row == 1);
+	}
+	
+
+
 }

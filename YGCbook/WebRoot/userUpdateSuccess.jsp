@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UtF-8">
-<title>註冊成功</title>
+<title>更新成功</title>
 </head>
 <body>
-恭喜
+恭喜更新成功
 </body>
 </html>

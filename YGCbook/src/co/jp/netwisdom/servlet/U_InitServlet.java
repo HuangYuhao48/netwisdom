@@ -16,17 +16,15 @@ import sun.security.krb5.KdcComm;
 
 
 
-public class U_SearchServlet extends HttpServlet{
+public class U_InitServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String username = req.getParameter("username");
-		String sex = req.getParameter("sex");
-		String major = req.getParameter("major");
 		
 		UserInfoDAO dao = new UserInfoDAO();
-		List<UserInfoAndHobby> list = dao.findUserInfoAndHobby(username, sex, major);
+		List<UserInfoAndHobby> list = dao.findUserInfoAndHobby(username);
 		
 		//創建一個存放UserInfoAndHobbyDto的List
 		List<UserInfoAndHobbyDto> dtos = new ArrayList<>();
@@ -76,9 +74,12 @@ public class U_SearchServlet extends HttpServlet{
 		}
 		
 		//把查詢出來的list放入請求中
-		req.setAttribute("dtos", dtos);
+		req.setAttribute("dto", dtos.get(0));
 		
-		req.getRequestDispatcher("U_Search.jsp").forward(req, resp);
+		req.getRequestDispatcher("userReg.jsp").forward(req, resp);
+		
+	
+		
 		
 	
 

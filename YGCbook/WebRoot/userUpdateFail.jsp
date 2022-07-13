@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>註冊失敗</title>
+<title>更新失敗</title>
 </head>
 <body>
-滾吧
+更新失敗更新失敗滾吧
 </body>
 </html>
