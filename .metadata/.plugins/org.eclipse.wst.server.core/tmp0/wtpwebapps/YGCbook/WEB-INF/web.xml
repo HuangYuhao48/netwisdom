@@ -653,6 +653,17 @@
   </servlet-mapping>
   
   
+  <!-- Delete -->
+  
+  <servlet>
+  		<servlet-name>userDelServlet</servlet-name> 
+	    <servlet-class>co.jp.netwisdom.servlet.U_DelServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>userDelServlet</servlet-name>
+  		<url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  
   	
   <!--<error-page>
   	<error-code>404</error-code>

@@ -9,6 +9,15 @@
 <% UserInfoAndHobbyDto dto = (UserInfoAndHobbyDto)request.getAttribute("dto"); %>
 <title>用戶註冊信息</title>
 
+<script>
+function changeActionName(actionName){
+	document.getElementById("form").action=actionName;
+}
+
+
+</script>
+
+
 </head> 
 
 
@@ -45,13 +54,13 @@
 		<br>
 		<textarea name="intro">Tiger</textarea>
 		<br>
-		<input type="submit" value="Submit" />
+		<input type="submit" value="Register"/>
 		<input type="reset" value="Reset" />
 	</form>
 	
 <%}else{%>
 
-	<form action="update" method="get">
+	<form action="update" method="get" id="form">
 		<label for="username">姓名:</label>
 		<input type="text" id="username" name="username" readonly value="<%=dto.getUsername() %>" />
 		<br>
@@ -79,7 +88,8 @@
 		<br>
 		<textarea name="intro"><%=dto.getIntro() %></textarea>
 		<br>
-		<input type="submit" value="Update" />
+		<input type="submit" value="Update" onclick="changeActionName('update')"/>
+		<input type="submit" value="Delete" onclick="changeActionName('delete')"/>
 		<input type="reset" value="Reset" />
 	</form>
 	
