@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+	"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+	
+<struts-config>
+  
+	<form-beans>
+		<form-bean name="userForm" type="co.jp.netwisdom.form.U_Form"></form-bean>
+	</form-beans>
+ 	<action-mappings>
+		<action path="/search" 
+				type="co.jp.netwisdom.action.U_SearchAction" 
+				name="userForm"
+				scope="request">
+				<forward name="search" path="/U_Search.jsp"></forward>
+		</action>
+		<action path="/userReg" 
+				type="co.jp.netwisdom.action.UserRegisterAction" 
+				name="userForm"
+				scope="request">	
+				<forward name="success" path="/userSuccess.jsp"></forward>
+				<forward name="error" path="/userFail.jsp"></forward>
+ 		</action>
+		<action path="/update" 
+				type="co.jp.netwisdom.action.U_UpdateAction" 
+				name="userForm"
+				scope="request">
+				<forward name="update" path="/userUpdateSuccess.jsp"></forward>	
+		</action>
+		<action path="/delete" 
+				type="co.jp.netwisdom.action.U_DelAction" 
+				name="userForm"
+				scope="request">	
+				<forward name="U_Search" path="/U_Search.jsp"></forward>
+		</action>
+		<action path="/delAll" 
+				type="co.jp.netwisdom.action.U_DelAllAction" 
+				name="userForm"
+				scope="request">	
+				<forward name="U_Search" path="/U_Search.jsp"></forward>
+		</action>
+		<action path="/userInit" 
+				type="co.jp.netwisdom.action.U_InitAction" 
+				name="userForm"
+				scope="request">	
+				<forward name="userReg" path="/userReg.jsp"></forward>	
+		</action>
+			<action path="/userNameCheck" 
+				type="co.jp.netwisdom.action.U_NameCheckAction" 
+				name="userForm"
+				scope="request">		
+		</action>
+		
+ 	</action-mappings>
+	
+	<message-resources key="userResource" parameter="ApplicationResources"/>
+</struts-config>
+
+
+<!-- 
+
+
+	<form-beans>
+		<form-bean name="loginForm" type="com.coderdream.form.LogingForm"/>
+	</form-beans>
+	<action-mappings>
+		<action path="/login" type="com.coderdreeam.action.LogingAction" name="loginForm"
+				input="login.jsp" scope="request">
+				<forward name="success" path="/success.jsp"></forward>	
+				<forward name="failing" path="/failing.jsp"></forward>	
+		</action>
+ 	</action-mappings>
+ 
+
+
+ -->
+
+
+<!--  
+	<global-forwards>
+		<forward name="home" path="/Home.do"/>
+	</global-forwards>
+	
+	
+		<form-beans>
+		<form-bean name="beanForm" type="org.apache.struts.action.DynaActionForm"/>
+	</form-beans>
+	
+	<global-forwards>
+		<forward name="home" path="/Home.do"/>
+	</global-forwards>
+	
+-->

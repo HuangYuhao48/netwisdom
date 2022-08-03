@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script>
+            var a = prompt('請輸入操作\n 1. 存錢\n 2. 取錢\n 3. 餘額 \n 4. 退出');
+            var myMoney = 100.00;
+            var s = 2;
+            
+            while(a>0){
+                switch(a){
+                   
+                    case '1':
+                        n = prompt('請輸入存錢數:')-0;
+                        myMoney = myMoney + n ;
+                        alert('您的餘額為:' + myMoney.toFixed(2));
+                        a = prompt('請輸入操作\n 1. 存錢\n 2. 取錢\n 3. 餘額 \n 4. 退出');
+                        break;
+                    case '2' :
+                        n = prompt('請輸入取錢數:');
+                        if(n>myMoney){
+                            alert('餘額不足');
+                        }else{
+                            myMoney = myMoney - n;
+                            alert('您的餘額為:' + myMoney.toFixed(2));
+                        }
+                        a = prompt('請輸入操作\n 1. 存錢\n 2. 取錢\n 3. 餘額 \n 4. 退出');
+                        break;
+                    case '3' :
+                        alert('您的餘額為:' + myMoney.toFixed(2));
+                        a = prompt('請輸入操作\n 1. 存錢\n 2. 取錢\n 3. 餘額 \n 4. 退出');
+                        break;
+                    case '4' :
+                        a = false;
+                        break;
+                    default :
+                        alert('操作有誤,還剩'+ s +'次機會');
+                        s--;
+                        a = prompt('請輸入操作\n 1. 存錢\n 2. 取錢\n 3. 餘額 \n 4. 退出');
+                        if(s<0){
+                            a = false;
+                            break;
+                        }
+                }
+            }
+
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

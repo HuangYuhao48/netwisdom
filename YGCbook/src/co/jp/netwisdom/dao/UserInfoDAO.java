@@ -133,6 +133,28 @@ public List<UserInfoAndHobby> findUserInfoAndHobby(String username , String sex 
 		return list2;
 	}	
 	
+	
+	
+	public List<UserInfo> checkName(String username) {
+		
+		
+		String sql = "select * from userinfo where userinfo.delFlg='0' and userinfo.username = '" + username + "'";
+		
+		
+		List<UserInfo> list2 = new ArrayList<UserInfo>();
+		try {
+			list2 = template.selete(sql, new UserInfoMapping());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list2;
+	}	
+	
+	
+	
+	
+	
 	/**
 	 * 論理削除
 	 * @param userinfo

@@ -1,0 +1,64 @@
+<%@page import="co.jp.netwisdom.dto.UserInfoAndHobbyDto"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="co.jp.netwisdom.dto.UserInfoAndHobbyDto"%>    
+ <%@page import="java.util.List"%>   
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>For User Search</title>
+<% List<UserInfoAndHobbyDto> dtos = (List<UserInfoAndHobbyDto>)request.getAttribute("dtos"); %>
+</head>
+<body>
+	<form action="search.do" method="get">
+		<label for="username"><bean:message bundle="userResource " key="username"/>:</label>
+		<input type="text" id="username" name="username"/>
+		<br>
+		<label for="sex"> <bean:message bundle="userResource " key="sex"/>:</label>
+		<input type="radio" id="sex1" name="sex" value="0" />Male
+		<input type="radio" id="sex2" name="sex" value="1" />Female
+		<br>
+		<label for="major"> <bean:message bundle="userResource " key="major"/>:</label>
+		<select id="major" name="major">
+			<option value="">-</option>
+			<option value="0"> <bean:message bundle="userResource " key="software"/></option>
+			<option value="1"> <bean:message bundle="userResource " key="english"/></option>
+			<option value="2">數學</option>
+		</select>
+		<br>
+		<input type="submit" value="Submit" />
+		<input type="reset" value="Reset" />
+	</form>
+	<hr>
+	
+	<table border="1">
+		<tr style="background-color:yellow">
+			<th><bean:message bundle="userResource " key="username"/></th>
+			<th> <bean:message bundle="userResource " key="sex"/></th>
+			<th> <bean:message bundle="userResource " key="major"/></th>
+			<th> <bean:message bundle="userResource " key="hobby"/></th>
+			<th>簡介</th>
+		</tr>
+		<% if(dtos!=null){ %>
+		
+			<% int i = 0; %>
+			<% for(UserInfoAndHobbyDto dto : dtos){ %>
+				<% i++; %>
+				<tr style="background-color:<%=i%2==1? "lightblue":"pink" %>" >
+					<td><a href="userInit.do?username=<%=dto.getUsername() %>"><%=dto.getUsername() %></a></td>
+					<td><%=dto.getSex().replace("0", "男").replace("1", "女") %></td>
+					<td><%=dto.getMajor().replace("0", " <bean:message bundle="userResource " key="software"/>").replace("1", " <bean:message bundle="userResource " key="english"/>").replace("2", "數學") %></td>
+					<td>
+						<%=dto.getHobbyList().contains("0")?" <bean:message bundle="userResource " key="soccer"/>":"" %>
+						<%=dto.getHobbyList().contains("1")?" <bean:message bundle="userResource " key="basketball"/>":"" %>
+						<%=dto.getHobbyList().contains("2")?" <bean:message bundle="userResource " key="tennis"/>":"" %>
+					</td>
+					<td><%=dto.getIntro() %></td>
+				</tr>
+			<%} %>
+		<%} %>
+	</table>
+	
+</body>
+</html>
